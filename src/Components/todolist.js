@@ -29,7 +29,7 @@ const TodoList = () => {
                 throw new Error('User ID not found in localStorage');
             }
 
-            const response = await axios.get(`http://localhost:8000/posts/${userId}`);
+            const response = await axios.get(`https://todo-applicatopn.onrender.com/posts/${userId}`);
             const userTodos = response?.data?.todos || [];
             setTodos(userTodos);
             setNData(response?.data);
@@ -53,7 +53,7 @@ const TodoList = () => {
                 throw new Error('User ID not found in localStorage');
             }
     
-            const response = await axios.get(`http://localhost:8000/posts/${userId}`);
+            const response = await axios.get(`https://todo-applicatopn.onrender.com/posts/${userId}`);
             const existingUserData = response?.data || {};
             const { todos: existingTodos, ...otherUserData } = existingUserData;
     
@@ -83,7 +83,7 @@ const TodoList = () => {
     
             const updatedTodos = [...existingTodos, newTodo];
     
-            const updateResponse = await axios.put(`http://localhost:8000/posts/${userId}`, {
+            const updateResponse = await axios.put(`https://todo-applicatopn.onrender.com/posts/${userId}`, {
                 ...otherUserData,
                 todos: updatedTodos
             });
@@ -134,7 +134,7 @@ const TodoList = () => {
             setTimeout(async () => {
                 try {
                     // Fetch the user data from the backend
-                    const response = await axios.get(`http://localhost:8000/posts/${userId}`);
+                    const response = await axios.get(`https://todo-applicatopn.onrender.com/posts/${userId}`);
                     const userData = response.data;
     
                     // Update the todos array for the specific user
@@ -144,7 +144,7 @@ const TodoList = () => {
                     };
     
                     // Send a PUT request to update the user data in the database with the updated todos
-                    await axios.put(`http://localhost:8000/posts/${userId}`, updatedUser);
+                    await axios.put(`https://todo-applicatopn.onrender.com/posts/${userId}`, updatedUser);
     
                     toast.success('Todo order updated successfully!');
                 } catch (error) {
@@ -170,7 +170,7 @@ const TodoList = () => {
 
             const filteredTodos = todos.filter(todo => todo.id !== todoToDelete.id);
 
-            const updateResponse = await axios.put(`http://localhost:8000/posts/${userId}`, {
+            const updateResponse = await axios.put(`https://todo-applicatopn.onrender.com/posts/${userId}`, {
                 ...nData,
                 todos: filteredTodos
             });
@@ -211,7 +211,7 @@ const TodoList = () => {
             };
 
             const updatedTodos = todos.map(todo => todo.id === todoToEdit.id ? updatedTodo : todo);
-            const updateResponse = await axios.put(`http://localhost:8000/posts/${userId}`, {
+            const updateResponse = await axios.put(`https://todo-applicatopn.onrender.com/posts/${userId}`, {
                 ...nData,
                 todos: updatedTodos
             });
