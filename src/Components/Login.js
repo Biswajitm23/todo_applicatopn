@@ -46,7 +46,7 @@ const Login = () => {
     try {
       // Simulating API call with setTimeout
       setTimeout(async () => {
-        const response = await fetch('http://localhost:8000/posts');
+        const response = await fetch('https://todo-applicatopn.onrender.com/posts');
         const data = await response.json();
         console.log('Data from API:', data);
         if (Array.isArray(data) && data.length > 0) {
