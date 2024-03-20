@@ -79,7 +79,7 @@ const Registration = ({ closeRegistrationModal }) => {
   
   if (validateInputs()) {
     try {
-      const response = await axios.get('http://localhost:8000/posts');
+      const response = await axios.get('https://todo-applicatopn.onrender.com/posts');
       const isEmailRegistered = response?.data.some((user) => user.email === formData.email);
       
       if (isEmailRegistered) {
@@ -122,7 +122,7 @@ const Registration = ({ closeRegistrationModal }) => {
         localStorage.setItem('User', JSON.stringify(userData));
         
         // Perform the POST request to your server endpoint
-        await axios.post("http://localhost:8000/posts", userData);
+        await axios.post("https://todo-applicatopn.onrender.com/posts", userData);
         
         // Display success message
         toast.success("Registration Done");
